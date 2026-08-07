@@ -25,6 +25,10 @@ def _get_doc_template():
                     rows.extend([name, "=" * len(name), "", doc, ""])
                 return "\n".join(rows)
 
+    # Renders reStructuredText for Sphinx docs, not HTML; input is ONNX
+    # operator schema metadata, not attacker-controlled, so autoescape=False
+    # (the default) is correct here.
+    # codeql[py/jinja2-autoescape-false]
     return Template(
         textwrap.dedent("""
         {% for sch in schemas %}
@@ -132,6 +136,10 @@ def _get_doc_template_sklearn():
                     rows.extend([name, "=" * len(name), "", doc, ""])
                 return "\n".join(rows)
 
+    # Renders reStructuredText for Sphinx docs, not HTML; input is scikit-learn
+    # class metadata, not attacker-controlled, so autoescape=False (the
+    # default) is correct here.
+    # codeql[py/jinja2-autoescape-false]
     return Template(
         textwrap.dedent("""
         {% for cl in classes %}
