@@ -8,7 +8,6 @@ from onnxruntime import __version__ as ort_version
 
 
 class TestInvestigateOnnxmltools(unittest.TestCase):
-
     @unittest.skipIf(
         pv.Version(ort_version) < pv.Version("1.17.3"),
         reason="opset 19 not implemented",

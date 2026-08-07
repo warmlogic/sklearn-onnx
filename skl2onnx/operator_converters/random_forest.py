@@ -236,8 +236,9 @@ def convert_sklearn_random_forest_classifier(
                 attr_pairs["post_transform"] = "SOFTMAX"
             else:
                 raise NotImplementedError(
-                    "There is no corresponding post_transform for "
-                    "'{}'.".format(loss.__class__.__name__)
+                    "There is no corresponding post_transform for '{}'.".format(
+                        loss.__class__.__name__
+                    )
                 )
         elif use_raw_scores:
             raise RuntimeError(
@@ -380,8 +381,9 @@ def convert_sklearn_random_forest_classifier(
     else:
         if use_raw_scores:
             raise RuntimeError(
-                "The converter cannot implement decision_function for "
-                "'{}'.".format(type(op))
+                "The converter cannot implement decision_function for '{}'.".format(
+                    type(op)
+                )
             )
         concatenated_proba_name = scope.get_unique_variable_name("concatenated_proba")
         proba = []

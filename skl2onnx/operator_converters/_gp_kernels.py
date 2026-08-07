@@ -131,8 +131,9 @@ def convert_kernel_diag(
 def py_make_float_array(cst, dtype, as_tensor=False):
     if dtype not in (np.float32, np.float64):
         raise TypeError(
-            "A float array must be of dtype "
-            "np.float32 or np.float64 ({}).".format(dtype)
+            "A float array must be of dtype np.float32 or np.float64 ({}).".format(
+                dtype
+            )
         )
     if isinstance(cst, np.ndarray):
         res = cst.astype(dtype)

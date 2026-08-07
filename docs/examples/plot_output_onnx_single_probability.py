@@ -97,7 +97,8 @@ indices = onnx.helper.make_tensor(
 )  # Index 1 to gather positive class
 
 ################################################
-# Create a "Gather" node in the ONNX graph to extract the probability of the positive class.
+# Create a "Gather" node in the ONNX graph to extract the probability
+# of the positive class.
 #
 # - inputs: [prob_output_name, "indices"] specify the inputs
 #   to this node (probability tensor and index tensor).
@@ -119,7 +120,8 @@ onnx_model.graph.node.append(gather_node)
 
 ################################################
 # Add the tensor initializer for indices (needed for the Gather node)
-# Initializers in ONNX are used to define constant tensors that are used in the computation.
+# Initializers in ONNX are used to define constant tensors that are
+# used in the computation.
 onnx_model.graph.initializer.append(indices)
 
 ################################################

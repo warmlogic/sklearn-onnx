@@ -1,5 +1,4 @@
 # tests
-black
 jinja2
 ndonnx
 onnxruntime-extensions; sys_platform != 'darwin' and sys_platform != 'win32'

@@ -95,8 +95,9 @@ class PredictableTSNE(BaseEstimator, TransformerMixin):
         self.keep_tsne_outputs = keep_tsne_outputs
         if not hasattr(transformer, "fit_transform"):
             raise AttributeError(
-                "Transformer {} does not have a 'fit_transform' "
-                "method.".format(type(transformer))
+                "Transformer {} does not have a 'fit_transform' method.".format(
+                    type(transformer)
+                )
             )
         if not hasattr(estimator, "predict"):
             raise AttributeError(

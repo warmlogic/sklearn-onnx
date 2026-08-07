@@ -54,8 +54,7 @@ class TestSklearnDoubleTensorTypeRegressor(unittest.TestCase):
 
     @unittest.skipIf(
         pv.Version(ort_version) < pv.Version("1.7.0"),
-        reason="onnxruntime misses implementation for "
-        "Relu, Tanh, Sigmoid for double",
+        reason="onnxruntime misses implementation for Relu, Tanh, Sigmoid for double",
     )
     @ignore_warnings(category=warnings_to_skip)
     def test_model_mlpregressor_64(self):

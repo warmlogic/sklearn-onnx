@@ -176,9 +176,9 @@ class TestConcatOutputType(unittest.TestCase):
         # thus the more generic typing is `float`
         out_type = onx.graph.output[0].type.tensor_type.elem_type
         right_type = FloatTensorType().to_onnx_type().tensor_type.elem_type
-        assert (
-            out_type == right_type
-        ), "The `concat` output does not have the expected output type."
+        assert out_type == right_type, (
+            "The `concat` output does not have the expected output type."
+        )
 
     @unittest.skipIf(ColumnTransformer is None, reason="too old scikit-learn")
     def test_concat_float64_float32_output_type(self):

@@ -96,8 +96,9 @@ def find_class(skl_cl):
     cl = getattr(this, full_name)
     if "automation" in str(cl):
         raise RuntimeError(
-            "Dynamic operation issue with class "
-            "name '{}' from '{}'.".format(cl, __name__)
+            "Dynamic operation issue with class name '{}' from '{}'.".format(
+                cl, __name__
+            )
         )
     return cl
 

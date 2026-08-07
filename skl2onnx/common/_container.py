@@ -678,9 +678,10 @@ class ModelComponentContainer(_WhiteBlackContainer):
         )
         if not hasattr(self, "_added_names_"):
             self._added_names_ = set()
-        assert all(
-            n not in self._added_names_ for n in outputs
-        ), f"One output node in {outputs} was already added, added={self._added_names_}"
+        assert all(n not in self._added_names_ for n in outputs), (
+            f"One output node in {outputs} was already added, "
+            f"added={self._added_names_}"
+        )
         self._added_names_ |= set(outputs)
         try:
             common = set(inputs) & set(outputs)
@@ -848,8 +849,9 @@ class ModelComponentContainer(_WhiteBlackContainer):
             return allowed
         clname = str(model) if inspect.isfunction(model) else model.__class__.__name__
         raise NotImplementedError(
-            "No registered models, no known allowed options "
-            "for model '{}'.".format(clname)
+            "No registered models, no known allowed options for model '{}'.".format(
+                clname
+            )
         )
 
     def validate_options(self, operator):

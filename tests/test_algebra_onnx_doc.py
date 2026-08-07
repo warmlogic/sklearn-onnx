@@ -49,9 +49,9 @@ class TestAlgebraOnnxDoc(unittest.TestCase):
     @unittest.skipIf(TARGET_OPSET <= 20, reason="not available")
     def test_doc_sklearn(self):
         rst = get_rst_doc_sklearn()
-        assert (
-            ".. _l-sklops-OnnxSklearnBernoulliNB:" in rst
-        ), f"Unable to find a substring in {rst}"
+        assert ".. _l-sklops-OnnxSklearnBernoulliNB:" in rst, (
+            f"Unable to find a substring in {rst}"
+        )
 
 
 if __name__ == "__main__":

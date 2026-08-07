@@ -215,8 +215,7 @@ if onnx_opset_version() >= 18:
                             res[i, target_ids[it]] += tr.atts.target_weights[it]
                 else:
                     raise NotImplementedError(
-                        f"aggregate_transform={aggregate_function!r} "
-                        f"not supported yet."
+                        f"aggregate_transform={aggregate_function!r} not supported yet."
                     )
 
             if post_transform in (None, "NONE"):
@@ -336,8 +335,7 @@ if onnx_opset_version() >= 18:
                         labels = np.array([d.get(i, 0) for i in labels], dtype=np.int64)
                     else:
                         raise NotImplementedError(
-                            f"classlabels_int64s={classlabels_int64s}, "
-                            f"not supported."
+                            f"classlabels_int64s={classlabels_int64s}, not supported."
                         )
                 else:
                     labels = np.array(

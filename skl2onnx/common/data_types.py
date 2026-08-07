@@ -138,8 +138,7 @@ class SequenceType(DataType):
             raise RuntimeError(msg) from ee
         except TypeError as e:
             raise RuntimeError(
-                "Unable to create SequenceType with "
-                "element_type=%r" % self.element_type
+                "Unable to create SequenceType with element_type=%r" % self.element_type
             ) from e
         return onnx_type
 

@@ -43,8 +43,9 @@ def _apply_optimisation_on_graph(
             op_set.version = oimp.version
         return new_model
     raise TypeError(
-        "This function only works on 'ModelProto' anod not not on"
-        " {}.".format(type(onnx_model))
+        "This function only works on 'ModelProto' anod not not on {}.".format(
+            type(onnx_model)
+        )
     )
 
 

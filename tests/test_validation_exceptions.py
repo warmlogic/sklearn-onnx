@@ -154,7 +154,8 @@ class TestValidationExceptions(unittest.TestCase):
         self.assertIn("at least 2 input(s)", str(exc))
 
     def test_exception_hierarchy(self):
-        # For backwards compatibility, ensure all our exceptions are RuntimeError subclasses
+        # For backwards compatibility, ensure all our exceptions are
+        # RuntimeError subclasses
         self.assertTrue(issubclass(InvalidInputLengthException, RuntimeError))
         self.assertTrue(issubclass(InvalidOutputLengthException, RuntimeError))
         self.assertTrue(issubclass(InvalidInputTypeException, RuntimeError))

@@ -66,8 +66,9 @@ def calculate_sklearn_concat(operator):
                 )
             )
         raise NotImplementedError(
-            "Columns must be tensors."
-            "Inputs:\n{}\nOutputs:\n{}".format(operator.inputs, operator.outputs)
+            "Columns must be tensors.Inputs:\n{}\nOutputs:\n{}".format(
+                operator.inputs, operator.outputs
+            )
         )
 
     # Let's determine the resulting type
@@ -82,9 +83,9 @@ def calculate_sklearn_concat(operator):
 
     if final_type is None:
         raise NotImplementedError(
-            "Columns must be tensors.\n"
-            "- Inputs: {}\n- Outputs: {}\n- types: {}"
-            "".format(operator.inputs, operator.outputs, seen_types)
+            "Columns must be tensors.\n- Inputs: {}\n- Outputs: {}\n- types: {}".format(
+                operator.inputs, operator.outputs, seen_types
+            )
         )
     if final_type != operator.outputs[0].type:
         operator.outputs[0].type = type(final_type)([N, C])

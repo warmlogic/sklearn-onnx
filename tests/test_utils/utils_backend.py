@@ -51,8 +51,9 @@ def evaluate_condition(backend, condition):
 
         return eval(condition)
     raise NotImplementedError(
-        "Not implemented for backend '{0}' and "
-        "condition '{1}'.".format(backend, condition)
+        "Not implemented for backend '{0}' and condition '{1}'.".format(
+            backend, condition
+        )
     )
 
 

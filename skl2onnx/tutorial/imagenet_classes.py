@@ -886,8 +886,7 @@ class_names = {
     864: "tow truck, tow car, wrecker",
     865: "toyshop",
     866: "tractor",
-    867: "trailer truck, tractor trailer, trucking rig, rig, "
-    "articulated lorry, semi",
+    867: "trailer truck, tractor trailer, trucking rig, rig, articulated lorry, semi",
     868: "tray",
     869: "trench coat",
     870: "tricycle, trike, velocipede",

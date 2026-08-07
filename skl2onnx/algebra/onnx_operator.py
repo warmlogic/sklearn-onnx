@@ -261,8 +261,7 @@ class OnnxOperator:
         """
         if not hasattr(self.__class__, "past_version"):
             raise RuntimeError(
-                "Missing attribute 'past_version', there is "
-                "no other available schema."
+                "Missing attribute 'past_version', there is no other available schema."
             )
         found = None
         for v in self.past_version.values():
@@ -272,8 +271,7 @@ class OnnxOperator:
                 found = v
         if found is None:
             raise RuntimeError(
-                "Operator '{}': requested version {} < "
-                "{} schema version.".format(
+                "Operator '{}': requested version {} < {} schema version.".format(
                     self.__class__.__name__, op_version, self.since_version
                 )
             )
@@ -324,8 +322,7 @@ class OnnxOperator:
                     output_names[i] = VariableStr(output_names[i])
         elif output_names is not None:
             raise TypeError(
-                "output_names must be a string or a list not %r."
-                "" % type(output_names)
+                "output_names must be a string or a list not %r." % type(output_names)
             )
 
         if op_version is None:
@@ -367,8 +364,7 @@ class OnnxOperator:
 
         if self.op_version is not None and self.op_version < self.since_version:
             raise RuntimeError(
-                "Operator '{}': requested version {} < "
-                "{} schema version.".format(
+                "Operator '{}': requested version {} < {} schema version.".format(
                     self.__class__.__name__, self.op_version, self.since_version
                 )
             )
@@ -444,8 +440,7 @@ class OnnxOperator:
         else:
             if not isinstance(global_context, dict):
                 raise TypeError(
-                    "global_context must be a dictionary not %r."
-                    "" % type(global_context)
+                    "global_context must be a dictionary not %r." % type(global_context)
                 )
             for k, v in global_context.items():
                 if not isinstance(v, (OnnxOperator, OnnxOperatorItem)):
@@ -733,8 +728,9 @@ class OnnxOperator:
         if self.state is None:
             if self.is_deprecated:
                 raise RuntimeError(
-                    "Node '{}' is deprecated. This API cannot deprecated "
-                    "nodes.".format(self.__class__.__name__)
+                    "Node '{}' is deprecated. This API cannot deprecated nodes.".format(
+                        self.__class__.__name__
+                    )
                 )
             if self.op_version is not None and self.op_version < self.since_version:
                 raise RuntimeError(
@@ -780,8 +776,9 @@ class OnnxOperator:
     def _verify_add_to_(self):
         if self.state is None:
             raise RuntimeError(
-                "Graph was not produced for operator '{}': {}."
-                "".format(self.__class__.__name__, self)
+                "Graph was not produced for operator '{}': {}.".format(
+                    self.__class__.__name__, self
+                )
             )
         for i in self.inputs:
             if hasattr(i, "_verify_add_to_"):
@@ -970,9 +967,9 @@ class OnnxOperator:
                 new_inputs.append((obj[0], ty))
             else:
                 raise TypeError(
-                    "Inputs must be Variable or "
-                    "tuple(name, type) not {}."
-                    "".format(type(obj))
+                    "Inputs must be Variable or tuple(name, type) not {}.".format(
+                        type(obj)
+                    )
                 )
         inputs = new_inputs
         for name, typ in inputs:

@@ -188,9 +188,9 @@ def convert_sklearn_one_hot_encoder(
             and ohe_op.drop_idx_ is not None
             and ohe_op.drop_idx_[index] is not None
         ):
-            assert (
-                n_cats is None
-            ), "drop_idx_ not implemented where there infrequent_categories"
+            assert n_cats is None, (
+                "drop_idx_ not implemented where there infrequent_categories"
+            )
             extracted_outputs_name = scope.get_unique_variable_name("extracted_outputs")
             indices_to_keep_name = scope.get_unique_variable_name("indices_to_keep")
             indices_to_keep = np.delete(

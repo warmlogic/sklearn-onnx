@@ -103,7 +103,8 @@ def apply_cast(scope, input_name, output_name, container, operator_name=None, to
             onnx_proto.TensorProto.COMPLEX128,
         ]:
             raise ValueError(
-                'Attribute "to" cannot correspond to a String or Complex TensorProto type.'
+                'Attribute "to" cannot correspond to a String or Complex '
+                "TensorProto type."
             )
 
         if container.target_opset < 6:

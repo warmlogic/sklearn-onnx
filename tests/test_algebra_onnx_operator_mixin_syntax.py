@@ -252,9 +252,8 @@ class TestOnnxOperatorMixinSyntax(unittest.TestCase):
                 model_def.SerializeToString(), providers=["CPUExecutionProvider"]
             )
         except RuntimeError as e:
-            if (
-                "Could not find an implementation for the node "
-                "Cl_Clip:Clip(11)" in str(e)
+            if "Could not find an implementation for the node Cl_Clip:Clip(11)" in str(
+                e
             ):
                 # Not yet implemented in onnxruntime
                 return

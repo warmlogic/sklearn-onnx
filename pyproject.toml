@@ -48,8 +48,6 @@ exclude = [
     "dist",
 ]
 
-line-length = 93
-
 [tool.ruff.lint]
 select = [
     "B", # flake8-bugbear

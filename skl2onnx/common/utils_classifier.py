@@ -42,8 +42,7 @@ def get_label_classes(scope, op, node_names=False):
         classes = np.array(list(sorted(set(op.y_))))
     else:
         raise RuntimeError(
-            "No known ways to retrieve the number of classes for class %r."
-            "" % type(op)
+            "No known ways to retrieve the number of classes for class %r." % type(op)
         )
     return classes
 

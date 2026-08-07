@@ -389,8 +389,7 @@ if 19 >= onnx_opset_version() >= 18:
                         dict_labels[v] = i
                 if len(dict_labels) == 0:
                     raise RuntimeError(
-                        "int64_vocabulary and string_vocabulary "
-                        "cannot be both empty."
+                        "int64_vocabulary and string_vocabulary cannot be both empty."
                     )
 
                 values = []

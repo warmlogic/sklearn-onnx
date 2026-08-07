@@ -181,9 +181,9 @@ def _transform_isotonic(scope, container, model, T, k, dtype, proto_type):
         atX, atY = "X_thresholds_", "y_thresholds_"
     else:
         raise AttributeError(
-            "Unable to find attribute '_X_' or '_necessary_X_' "
-            "for type {}\n{}."
-            "".format(type(calibrators[k]), pprint.pformat(dir(calibrators[k])))
+            "Unable to find attribute '_X_' or '_necessary_X_' for type {}\n{}.".format(
+                type(calibrators[k]), pprint.pformat(dir(calibrators[k]))
+            )
         )
 
     proto_type2 = proto_type

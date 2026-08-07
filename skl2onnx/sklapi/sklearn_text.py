@@ -38,8 +38,7 @@ class NGramsMixin(VectorizerMixin):
                     raise TypeError(f"Unexpected type {type(val)}:{val!r} for a token.")
                 if any(map(lambda x: not isinstance(x, str), val)):
                     raise TypeError(
-                        f"Unexpected type {val!r}, one part of a "
-                        f"token is not a string."
+                        f"Unexpected type {val!r}, one part of a token is not a string."
                     )
                 new_tokens.append(val)
             tokens = new_tokens

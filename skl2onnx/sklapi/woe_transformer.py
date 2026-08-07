@@ -99,15 +99,13 @@ class WOETransformer(TransformerMixin, BaseEstimator):
                         fv = float(interval[j])
                     except (TypeError, ValueError) as e:
                         raise TypeError(
-                            "Value at index %d in %r must be a float."
-                            "" % (j, interval)
+                            "Value at index %d in %r must be a float." % (j, interval)
                         ) from e
                     res.append(fv)
                 if len(interval) >= 3:
                     if not isinstance(interval[2], bool):
                         raise TypeError(
-                            "Value at index %i in %r must be a boolean."
-                            "" % (2, interval)
+                            "Value at index %i in %r must be a boolean." % (2, interval)
                         )
                     res.append(interval[2])
                 else:
@@ -115,8 +113,7 @@ class WOETransformer(TransformerMixin, BaseEstimator):
                 if len(interval) >= 4:
                     if not isinstance(interval[3], bool):
                         raise TypeError(
-                            "Value at index %i in %r must be a boolean."
-                            "" % (3, interval)
+                            "Value at index %i in %r must be a boolean." % (3, interval)
                         )
                     res.append(interval[3])
                 else:

@@ -105,8 +105,8 @@ class BaseEstimatorDebugInformation:
             )
         if hasattr(model, "decision_function") and callable(model.decision_function):
             model._debug_decision_function = model.decision_function
-            self.methods["decision_function"] = (
-                lambda model, X: model._debug_decision_function(X)
+            self.methods["decision_function"] = lambda model, X: (
+                model._debug_decision_function(X)
             )
 
     def __repr__(self):
@@ -208,8 +208,9 @@ def _alter_model_for_debugging(skl_model, recursive=False):
                     setattr(model, k, MethodType(new_methods[k], model))
                 except AttributeError:
                     warnings.warn(
-                        "Unable to overwrite method '{}' for class "
-                        "{}.".format(k, type(model)),
+                        "Unable to overwrite method '{}' for class {}.".format(
+                            k, type(model)
+                        ),
                         stacklevel=0,
                     )
     else:
@@ -219,8 +220,9 @@ def _alter_model_for_debugging(skl_model, recursive=False):
                 setattr(skl_model, k, MethodType(new_methods[k], skl_model))
             except AttributeError:
                 warnings.warn(
-                    "Unable to overwrite method '{}' for class "
-                    "{}.".format(k, type(skl_model)),
+                    "Unable to overwrite method '{}' for class {}.".format(
+                        k, type(skl_model)
+                    ),
                     stacklevel=0,
                 )
 

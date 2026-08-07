@@ -467,7 +467,8 @@ def _parse_sklearn_random_trees_embedding(scope, model, inputs, custom_parsers=N
         est = model.base_estimator_
     else:
         raise RuntimeError(
-            f"Model {model} was not trained (unable to find the estimator {dir(model)})."
+            f"Model {model} was not trained (unable to find "
+            f"the estimator {dir(model)})."
         )
     res = parse_sklearn(scope, est, inputs, custom_parsers=custom_parsers)
     if len(res) != 1:

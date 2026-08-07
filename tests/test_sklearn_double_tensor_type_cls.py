@@ -118,8 +118,7 @@ class TestSklearnDoubleTensorTypeClassifier(unittest.TestCase):
                                 methods=methods,
                                 verbose=verbose,
                                 comparable_outputs=comparable_outputs,
-                                basename="Sklearn{}Double2RAW{}"
-                                "ZIP{}CL{}".format(
+                                basename="Sklearn{}Double2RAW{}ZIP{}CL{}".format(
                                     name, 1 if b else 0, 1 if z else 0, n_cl
                                 ),
                             )

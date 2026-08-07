@@ -1011,7 +1011,8 @@ class TestNearestNeighbourConverter(unittest.TestCase):
         def _get_mask(X, value_to_mask):
             return (
                 torch.isnan(X)
-                if (  # sklearn.utils._missing.is_scalar_nan(value_to_mask)
+                # sklearn.utils._missing.is_scalar_nan(value_to_mask)
+                if (
                     not isinstance(value_to_mask, numbers.Integral)
                     and isinstance(value_to_mask, numbers.Real)
                     and math.isnan(value_to_mask)
@@ -1303,9 +1304,9 @@ class TestNearestNeighbourConverter(unittest.TestCase):
         class TorchKNNImputer(torch.nn.Module):
             def __init__(self, knn_imputer):
                 super().__init__()
-                assert (
-                    knn_imputer.metric == "nan_euclidean"
-                ), f"Not implemented for metric={knn_imputer.metric!r}"
+                assert knn_imputer.metric == "nan_euclidean", (
+                    f"Not implemented for metric={knn_imputer.metric!r}"
+                )
                 self.dist = NanEuclidean()
                 cols = []
                 for col in range(knn_imputer._fit_X.shape[1]):
@@ -1333,7 +1334,8 @@ class TestNearestNeighbourConverter(unittest.TestCase):
                 if self.add_indicator:
                     if not hasattr(self, "indicator_"):
                         raise ValueError(
-                            "Make sure to call _fit_indicator before _transform_indicator"
+                            "Make sure to call _fit_indicator before "
+                            "_transform_indicator"
                         )
                     raise NotImplementedError(type(self.indicator_))
                     # return self.indicator_.transform(X)
@@ -1723,7 +1725,9 @@ class TestNearestNeighbourConverter(unittest.TestCase):
         # in case onnruntime fails
         # from experimental_experiment.reference import OrtEval
 
-        # got = OrtEval(onnx_model, verbose=10).run(None, {"float_input": input_data})[0]
+        # got = OrtEval(onnx_model, verbose=10).run(
+        #     None, {"float_input": input_data}
+        # )[0]
         # assert_almost_equal(expected, got)
 
         got = InferenceSession(

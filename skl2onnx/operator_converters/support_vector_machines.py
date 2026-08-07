@@ -137,8 +137,9 @@ def convert_sklearn_svm_regressor(
         )
     else:
         raise ValueError(
-            "Unknown support vector machine model type found "
-            "'{0}'.".format(operator.type)
+            "Unknown support vector machine model type found '{0}'.".format(
+                operator.type
+            )
         )
 
 
@@ -267,8 +268,9 @@ def convert_sklearn_svm_classifier(
             )
     else:
         raise ValueError(
-            "Unknown support vector machine model type found "
-            "'{0}'.".format(operator.type)
+            "Unknown support vector machine model type found '{0}'.".format(
+                operator.type
+            )
         )
 
     if (

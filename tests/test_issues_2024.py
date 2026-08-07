@@ -41,9 +41,7 @@ class TestInvestigate(unittest.TestCase):
                 label_name = sess.get_outputs()[0].name
                 pred_onx = sess.run(
                     [label_name], {input_name: X_test[:1].astype("float32")}
-                )[
-                    0
-                ]  # Select a single sample.
+                )[0]  # Select a single sample.
                 self.assertEqual(len(pred_onx.tolist()), 1)
 
     @unittest.skipIf(

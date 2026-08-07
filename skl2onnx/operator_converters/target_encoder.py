@@ -24,7 +24,8 @@ def convert_sklearn_target_encoder(
         raise NotImplementedError(
             "Current implementation of the converter only support TargetEncoder for"
             " binary classification or 1d regression (sklearn target types binary"
-            " or continuous). See scikit-learn type_of_target documentation for details."
+            " or continuous). See scikit-learn type_of_target documentation for"
+            " details."
         )
     for categories, encodings in zip(op.categories_, op.encodings_):
         if len(categories) == 0:

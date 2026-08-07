@@ -5,7 +5,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/skl2onnx.svg)](https://pypi.org/project/skl2onnx)
 [![Linux](https://github.com/onnx/sklearn-onnx/actions/workflows/linux-ci.yml/badge.svg)](https://github.com/onnx/sklearn-onnx/actions/workflows/linux-ci.yml)
 [![Windows/Macos](https://github.com/onnx/sklearn-onnx/actions/workflows/windows-macos-ci.yml/badge.svg)](https://github.com/onnx/sklearn-onnx/actions/workflows/windows-macos-ci.yml)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 ## Introduction
 *sklearn-onnx* converts [scikit-learn](https://scikit-learn.org/stable/) models to [ONNX](https://github.com/onnx/onnx).
@@ -72,7 +72,7 @@ Before you submit any PR, you should apply the following command lines
 to fix the style issues.
 
 ```bash
-black .
+ruff format .
 ruff check .
 ```
 

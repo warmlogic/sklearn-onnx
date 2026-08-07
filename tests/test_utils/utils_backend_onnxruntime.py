@@ -162,9 +162,8 @@ def compare_runtime(
                 smodel = "\nJSON ONNX\n" + str(model)
             else:
                 smodel = ""
-            if (
-                "NOT_IMPLEMENTED : Could not find an implementation "
-                "for the node" in str(e)
+            if "NOT_IMPLEMENTED : Could not find an implementation for the node" in str(
+                e
             ):
                 # onnxruntime does not implement a specific node yet.
                 raise OnnxRuntimeMissingNewOnnxOperatorException(
@@ -555,8 +554,9 @@ def _compare_expected(
                 )
             if len(expected) != len(output):
                 raise OnnxRuntimeAssertionError(
-                    "Unexpected number of outputs '{0}', "
-                    "expected={1}, got={2}".format(onnx, len(expected), len(output))
+                    "Unexpected number of outputs '{0}', expected={1}, got={2}".format(
+                        onnx, len(expected), len(output)
+                    )
                 )
             for exp, out in zip(expected, output):
                 _compare_expected(
@@ -654,8 +654,9 @@ def _compare_expected(
             tested += 1
         else:
             raise OnnxRuntimeAssertionError(
-                "Unexpected type for expected output ({1}) "
-                "and onnx '{0}'".format(onnx, type(expected))
+                "Unexpected type for expected output ({1}) and onnx '{0}'".format(
+                    onnx, type(expected)
+                )
             )
     if tested == 0:
         raise OnnxRuntimeAssertionError("No test for onnx '{0}'".format(onnx))

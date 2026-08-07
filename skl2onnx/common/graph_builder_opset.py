@@ -128,9 +128,10 @@ class Opset:
         allow_empty_shape: bool = False,
         **kwargs,
     ):
-        assert (
-            op_type != "Split" or outputs != 1
-        ), f"Operator Split is useless with one output, inputs={inputs}, outputs={outputs}"
+        assert op_type != "Split" or outputs != 1, (
+            f"Operator Split is useless with one output, "
+            f"inputs={inputs}, outputs={outputs}"
+        )
         if outputs is None:
             num_outputs = self._implemented[op_type]
             outputs = [
@@ -143,9 +144,9 @@ class Opset:
                 for _ in range(outputs)
             ]
         else:
-            assert all(
-                not self.scope.has_variable_name(n) for n in outputs
-            ), f"Duplicated names {outputs!r}"
+            assert all(not self.scope.has_variable_name(n) for n in outputs), (
+                f"Duplicated names {outputs!r}"
+            )
 
         if inputs is None:
             inputs = []
@@ -157,9 +158,9 @@ class Opset:
         ), f"Suspicious shape {inputs[1]!r} for a Reshape"
         new_inputs = []
         for i in inputs:
-            assert not isinstance(
-                i, (list, tuple)
-            ), f"Wrong inputs for operator {op_type!r}: {inputs!r}"
+            assert not isinstance(i, (list, tuple)), (
+                f"Wrong inputs for operator {op_type!r}: {inputs!r}"
+            )
             if isinstance(i, str):
                 new_inputs.append(i)
             elif hasattr(i, "name") and not hasattr(i, "detach"):

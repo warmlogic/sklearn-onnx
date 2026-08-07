@@ -386,7 +386,8 @@ def _convert_nearest_neighbors(operator, container, k=None, radius=None):
         new_labels[..., -1] = max(abs(training_labels.max()) * 123456789, 123456789)
 
         flattened = OnnxFlatten(top_indices, op_version=opv)
-        # There could be negative value for rejected neighbours, we give very high distance.
+        # There could be negative value for rejected neighbours, we give very
+        # high distance.
         flattened = OnnxWhere(
             OnnxEqual(flattened, np.array([-1], dtype=np.int64), op_version=opv),
             np.array([training_labels.shape[-1]], dtype=np.int64),
@@ -1458,8 +1459,8 @@ def make_knn_imputer_column_nan_found(
     lt = op.Less(n_neighours, sym_size_int_23, outputs=["lt"])
     where_1 = op.Where(lt, n_neighours, sym_size_int_23, outputs=["where_1"])
     le = op.LessOrEqual(where_1, init7_s_0, outputs=["le"])
-    # c_lifted_tensor_2 -> init7_s_1 to have a zero time, onnxruntime crashes wher shapes are
-    # (), (1,), ()
+    # c_lifted_tensor_2 -> init7_s_1 to have a zero time, onnxruntime crashes
+    # wher shapes are (), (1,), ()
     where_2 = op.Where(le, init7_s_1, where_1, outputs=["where_2"])
     select_6 = op.Gather(_fit_x, init7_s_2, axis=1, outputs=["select_6"])
     index_11 = op.Gather(select_6, nonzero_numpy__0, axis=0, outputs=["index_11"])
@@ -1531,14 +1532,18 @@ def make_knn_imputer_column(g: ModelComponentContainer, scope: Scope, itype: int
         outputs=["zero"],
     )
     init7_s_2 = i_col
-    # init7_s_2 = op.Constant(value=from_array(np.array(2, dtype=np.int64), name='value'),
-    # outputs=['init7_s_2'])
+    # init7_s_2 = op.Constant(
+    #     value=from_array(np.array(2, dtype=np.int64), name='value'),
+    #     outputs=['init7_s_2'],
+    # )
     init7_s1__1 = op.Constant(
         value=from_array(np.array([-1], dtype=np.int64), name="value"),
         outputs=["init7_s1__1"],
     )
-    # init7_s1_2 = op.Constant(value=from_array(np.array([2], dtype=np.int64), name='value'),
-    # outputs=['init7_s1_2'])
+    # init7_s1_2 = op.Constant(
+    #     value=from_array(np.array([2], dtype=np.int64), name='value'),
+    #     outputs=['init7_s1_2'],
+    # )
     select = op.Gather(mask, init7_s_2, axis=1, outputs=["select"])
     index = op.Gather(select, row_missing_idx, axis=0, outputs=["index"])
     view = op.Reshape(index, init7_s1__1, outputs=["view"])
@@ -1650,9 +1655,9 @@ def convert_knn_imputer(
     """
     Converts *KNNImputer* into *ONNX*.
     """
-    assert (
-        container.target_opset >= 18
-    ), f"This converter no longer works for opset {container.target_opset} < 18."
+    assert container.target_opset >= 18, (
+        f"This converter no longer works for opset {container.target_opset} < 18."
+    )
     dtype = guess_numpy_type(operator.inputs[0].type)
     if dtype != np.float64:
         dtype = np.float32

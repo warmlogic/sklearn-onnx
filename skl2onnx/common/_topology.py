@@ -178,8 +178,9 @@ class Variable:
                     shape = list(shape)
                 except TypeError:
                     raise TypeError(  # noqa: B904
-                        "shape must be a tuple or a list not "
-                        "{}.".format(type_fct(shape))
+                        "shape must be a tuple or a list not {}.".format(
+                            type_fct(shape)
+                        )
                     )
             for dim in shape:
                 if dim is None:
@@ -516,8 +517,9 @@ class Operator:
         """
         if isinstance(raw_operator, str):
             raise RuntimeError(
-                "Parameter raw_operator must be an object not "
-                "a string '{0}'.".format(raw_operator)
+                "Parameter raw_operator must be an object not a string '{0}'.".format(
+                    raw_operator
+                )
             )
         # operator name in the converted model, if raw_operator
         # is not None, output_shapes can be guessed
@@ -647,8 +649,9 @@ class Operator:
             )
         if shape_calc is None:
             raise MissingShapeCalculator(
-                "Unexpected shape calculator for alias '{}' "
-                "and type '{}'.".format(self.type, type(self.raw_operator))
+                "Unexpected shape calculator for alias '{}' and type '{}'.".format(
+                    self.type, type(self.raw_operator)
+                )
             )
         logger.debug(
             "[Shape-a] %r fed %r - %r",
@@ -835,8 +838,7 @@ class Scope:
                 self.onnx_variable_names.add(name)
             if node.name in self.onnx_operator_names:
                 raise NameError(
-                    "Operator name %r is already taken "
-                    "(node=%r)." % (node.name, node)
+                    "Operator name %r is already taken (node=%r)." % (node.name, node)
                 )
             self.onnx_operator_names.add(node.name)
 
@@ -901,8 +903,9 @@ class Scope:
             allowed = conv.get_allowed_options()
             return allowed
         raise NotImplementedError(
-            "No registered models, no known allowed options "
-            "for model '{}'.".format(model.__class__.__name__)
+            "No registered models, no known allowed options for model '{}'.".format(
+                model.__class__.__name__
+            )
         )
 
     def add_options(self, model_id, options):

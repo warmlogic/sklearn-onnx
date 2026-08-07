@@ -44,13 +44,13 @@ class PredictableTSNE(BaseEstimator, TransformerMixin):
         self.keep_tsne_outputs = keep_tsne_outputs
         if not hasattr(transformer, "fit_transform"):
             raise AttributeError(
-                "transformer {} does not have a 'fit_transform' "
-                "method.".format(type(transformer))
+                "transformer {} does not have a 'fit_transform' method.".format(
+                    type(transformer)
+                )
             )
         if not hasattr(estimator, "predict"):
             raise AttributeError(
-                "estimator {} does not have a 'predict' "
-                "method.".format(type(estimator))
+                "estimator {} does not have a 'predict' method.".format(type(estimator))
             )
         self.normalize = normalize
         if kwargs:

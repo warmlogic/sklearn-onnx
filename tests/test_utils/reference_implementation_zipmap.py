@@ -34,8 +34,7 @@ if onnx_opset_version() >= 18:
                     raise TypeError(f"matrix is expected, got {type(mat)}.")
                 if len(mat.shape) not in (2, 3):
                     raise ValueError(
-                        f"matrix must have two or three dimensions "
-                        f"but got {mat.shape}."
+                        f"matrix must have two or three dimensions but got {mat.shape}."
                     )
             dict.__init__(self)
             self._rev_keys = rev_keys
@@ -135,8 +134,7 @@ if onnx_opset_version() >= 18:
                     raise TypeError(f"matrix is expected, got {type(mat)}.")
                 if len(mat.shape) not in (2, 3):
                     raise ValueError(
-                        f"matrix must have two or three "
-                        f"dimensions but got {mat.shape}."
+                        f"matrix must have two or three dimensions but got {mat.shape}."
                     )
             list.__init__(self)
             self._rev_keys = rev_keys

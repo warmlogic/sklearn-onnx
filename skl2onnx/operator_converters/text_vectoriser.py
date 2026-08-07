@@ -157,13 +157,20 @@ def convert_sklearn_text_vectorizer(
 
     ::
 
-        seps = {TfidfVectorizer: {"separators": [' ', '[.]', '\\\\?', ',', ';',
-                                                 ':', '!', '\\\\(', '\\\\)',
-                                                 '\\n', '\\\\"', "'", "-",
-                                                 "\\\\[", "\\\\]", "@"]}}
-        model_onnx = convert_sklearn(pipeline, "tfidf",
-                                     initial_types=[("input", StringTensorType([None, 2]))],
-                                     options=seps)
+        seps = {
+            TfidfVectorizer: {
+                "separators": [
+                    ' ', '[.]', '\\\\?', ',', ';', ':', '!', '\\\\(', '\\\\)',
+                    '\\n', '\\\\"', "'", "-", "\\\\[", "\\\\]", "@",
+                ]
+            }
+        }
+        model_onnx = convert_sklearn(
+            pipeline,
+            "tfidf",
+            initial_types=[("input", StringTensorType([None, 2]))],
+            options=seps,
+        )
 
     The default regular expression of the tokenizer is ``(?u)\\\\b\\\\w\\\\w+\\\\b``
     (see `re <https://docs.python.org/3/library/re.html>`_).
@@ -188,8 +195,9 @@ def convert_sklearn_text_vectorizer(
 
     if container.target_opset is not None and container.target_opset < 9:
         raise RuntimeError(
-            "Converter for '{}' only works for opset >= 9."
-            "".format(op.__class__.__name__)
+            "Converter for '{}' only works for opset >= 9.".format(
+                op.__class__.__name__
+            )
         )
 
     if op.analyzer == "char_wb":

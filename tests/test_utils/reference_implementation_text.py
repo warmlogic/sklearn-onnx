@@ -178,8 +178,7 @@ if onnx_opset_version() >= 18:
                 value = getattr(WeightingCriteria, "k" + mode, None)
             if value is None:
                 raise ValueError(
-                    f"Unexpected mode={mode!r}, "
-                    f"not found in {dir(WeightingCriteria)}."
+                    f"Unexpected mode={mode!r}, not found in {dir(WeightingCriteria)}."
                 )
             self.weighting_criteria_ = value  # type: ignore
 

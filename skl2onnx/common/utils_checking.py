@@ -31,8 +31,9 @@ def check_signature(fct, reference, skip=None):
     ref_pars = select_parameters(sig_ref.parameters)
     if len(fct_pars) != len(ref_pars):
         raise TypeError(
-            "Function '{}' must have {} parameters but has {}."
-            "".format(fct.__name__, len(ref_pars), len(fct_pars))
+            "Function '{}' must have {} parameters but has {}.".format(
+                fct.__name__, len(ref_pars), len(fct_pars)
+            )
         )
     for i, (a, b) in enumerate(zip(fct_pars, ref_pars)):
         if a != b and skip is not None and b not in skip and a not in skip:

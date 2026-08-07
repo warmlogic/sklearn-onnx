@@ -60,8 +60,9 @@ class OnnxOperatorMixin:
             if name is None:
                 name = self.__class__.__name__
             raise AttributeError(
-                "Attribute 'op_version' is missing for '{}' "
-                "(model: '{}').".format(self.__class__.__name__, name)
+                "Attribute 'op_version' is missing for '{}' (model: '{}').".format(
+                    self.__class__.__name__, name
+                )
             )
         return convert_sklearn(
             self,
@@ -90,8 +91,9 @@ class OnnxOperatorMixin:
             if issubclass(cl, BaseEstimator):
                 return cl
         raise RuntimeError(
-            "Unable to find any parent inherited from "
-            "BaseEstimator: {}.".format(", ".join(map(str, self.__class__.__bases__)))
+            "Unable to find any parent inherited from BaseEstimator: {}.".format(
+                ", ".join(map(str, self.__class__.__bases__))
+            )
         )
 
     def to_onnx_operator(
